@@ -1,0 +1,63 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="NFC Manager" icon="" />
+    
+    <TabView selectedIndex="{{ selectedTab }}">
+        <!-- Admin Tab -->
+        <TabView.items>
+            <TabViewItem title="Admin">
+                <TabViewItem.view>
+                    <GridLayout rows="auto, *" class="p-4">
+                        <StackLayout row="0" class="mb-4">
+                            <Button text="Read Empty Card" tap="{{ readEmptyCard }}" class="btn btn-primary mb-2" />
+                            <Button text="New Card" tap="{{ createNewCard }}" class="btn btn-primary mb-2" />
+                            <Button text="User Card" tap="{{ manageUserCard }}" class="btn btn-primary" />
+                        </StackLayout>
+                        
+                        <ListView row="1" items="{{ cardList }}" class="list-group">
+                            <ListView.itemTemplate>
+                                <StackLayout class="list-group-item">
+                                    <Label text="{{ cardId }}" class="h3" />
+                                    <Label text="{{ status }}" class="text-muted" />
+                                </StackLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </GridLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+
+            <!-- User Tab -->
+            <TabViewItem title="User">
+                <TabViewItem.view>
+                    <GridLayout rows="auto, auto, auto, auto" class="p-4">
+                        <StackLayout row="0" class="form mb-4">
+                            <Label text="Card ID:" class="font-bold" />
+                            <TextField text="{{ cardId }}" hint="Enter card ID" class="input mb-2" />
+                            <Button text="Verify Card" tap="{{ verifyCard }}" class="btn btn-primary" />
+                        </StackLayout>
+
+                        <StackLayout row="1" class="form mb-4">
+                            <Label text="Card Binding" class="h2 mb-2" />
+                            <TextField text="{{ vehicleNumber }}" hint="Vehicle Number" class="input mb-2" />
+                            <TextField text="{{ chassisNumber }}" hint="Chassis Number" class="input mb-2" />
+                            <TextField text="{{ expiryDate }}" hint="Expiry Date" class="input mb-2" />
+                            <Button text="Bind Card" tap="{{ bindCard }}" class="btn btn-primary" />
+                        </StackLayout>
+
+                        <StackLayout row="2" class="form mb-4">
+                            <Label text="Daily Check" class="h2 mb-2" />
+                            <TextField text="{{ checkCardId }}" hint="Card ID" class="input mb-2" />
+                            <Button text="Check Card" tap="{{ checkCard }}" class="btn btn-primary" />
+                        </StackLayout>
+
+                        <StackLayout row="3" class="form">
+                            <Label text="Points Exchange" class="h2 mb-2" />
+                            <Label text="{{ currentPoints }}" class="h3" />
+                            <TextField text="{{ exchangePoints }}" hint="Points to Exchange" keyboardType="number" class="input mb-2" />
+                            <Button text="Exchange" tap="{{ exchangePoints }}" class="btn btn-primary" />
+                        </StackLayout>
+                    </GridLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Page>
